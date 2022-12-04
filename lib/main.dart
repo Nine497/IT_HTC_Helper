@@ -5,7 +5,11 @@ import 'package:htc_helper/chat.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(Chat());
+  runApp(MaterialApp(
+    title: 'IT HTC Helper',
+    theme: ThemeData(textTheme: GoogleFonts.acmeTextTheme()),
+    home: Chat(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
