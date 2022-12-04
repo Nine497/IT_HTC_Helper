@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:htc_helper/Student_Login.dart';
+import 'package:htc_helper/chat.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    title: 'IT HTC Helper',
-    theme: ThemeData(textTheme: GoogleFonts.acmeTextTheme()),
-    home: MyApp(),
-  ));
+  runApp(Chat());
 }
 
 class MyApp extends StatelessWidget {
