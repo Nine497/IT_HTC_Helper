@@ -8,23 +8,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:htc_helper/main.dart';
 import 'package:intl/intl.dart';
-
-class Chatpage extends StatefulWidget {
-  const Chatpage({super.key});
-
-  @override
-  State<Chatpage> createState() => _ChatpageState();
-}
-
-class _ChatpageState extends State<Chatpage> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Chat IT Bot',
-      theme: ThemeData(textTheme: GoogleFonts.acmeTextTheme()),
-    );
-  }
-}
+import 'package:intl/date_symbol_data_local.dart';
 
 class Chat extends StatefulWidget {
   const Chat({super.key});
@@ -34,7 +18,6 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  DateTime now = new DateTime.now();
   void response(query) async {
     AuthGoogle authGoogle =
         await AuthGoogle(fileJson: "assets/service.json").build();
@@ -50,17 +33,23 @@ class _ChatState extends State<Chat> {
     print(aiResponse.getListMessage()[0]["text"]["text"][0].toString());
   }
 
-  var formatter = DateFormat.yMMMMEEEEd();
-
   final messageInsert = TextEditingController();
   List<Map> messsages = [];
 
   @override
   Widget build(BuildContext context) {
+    const locale = "en";
+
+    DateFormat timeFormat;
+
+    initializeDateFormatting(locale).then((_) {
+      timeFormat = DateFormat.Hm(locale);
+    });
+    final dateTimeFormat = DateFormat.yMMMMEEEEd(locale);
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Chat bot",
+          "IT HTC Chat bot",
         ),
       ),
       body: Container(
@@ -69,7 +58,7 @@ class _ChatState extends State<Chat> {
             Container(
               padding: EdgeInsets.only(top: 15, bottom: 10),
               child: Text(
-                "${formatter.format(now)}",
+                "${dateTimeFormat.format(DateTime.now())}",
                 style: TextStyle(fontSize: 20),
               ),
             ),
@@ -93,7 +82,7 @@ class _ChatState extends State<Chat> {
                   onPressed: () {},
                   icon: Icon(
                     Icons.camera_alt,
-                    color: Colors.greenAccent,
+                    color: Colors.blue.shade700,
                     size: 35,
                   ),
                 ),
@@ -103,7 +92,7 @@ class _ChatState extends State<Chat> {
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                     color: Color.fromRGBO(220, 220, 220, 1),
                   ),
-                  padding: EdgeInsets.only(left: 15),
+                  padding: EdgeInsets.only(left: 10, top: 17),
                   child: TextFormField(
                     controller: messageInsert,
                     decoration: InputDecoration(
@@ -123,7 +112,7 @@ class _ChatState extends State<Chat> {
                     icon: Icon(
                       Icons.send,
                       size: 30.0,
-                      color: Colors.greenAccent,
+                      color: Colors.blue.shade700,
                     ),
                     onPressed: () {
                       if (messageInsert.text.isEmpty) {
@@ -171,7 +160,7 @@ class _ChatState extends State<Chat> {
                 )
               : Container(),
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(5.0),
             child: Bubble(
                 radius: Radius.circular(15.0),
                 color: data == 0
@@ -191,8 +180,10 @@ class _ChatState extends State<Chat> {
                         constraints: BoxConstraints(maxWidth: 200),
                         child: Text(
                           message,
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.mali(
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
                         ),
                       ))
                     ],

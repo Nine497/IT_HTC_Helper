@@ -41,6 +41,10 @@ dependencies:
   bubble:
   intl: ^0.17.0
   dialogflow_flutter: ^0.0.3
+  form_field_validator: ^1.1.0
+  firebase_core: ^2.3.0
+  firebase_auth: ^4.1.5
+  fluttertoast: ^8.1.1
 
 flutter_icons:
   android: true
@@ -76,6 +80,7 @@ flutter:
     - assets/img/student.png
     - assets/img/Teacher.png
     - assets/img/Bot.png
+    - assets/img/Back.jpg
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

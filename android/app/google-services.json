@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "106820854064",
+    "project_id": "projectithtc",
+    "storage_bucket": "projectithtc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106820854064:android:fdbafa93b7d895514d68f5",
+        "android_client_info": {
+          "package_name": "com.example.htc_helper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106820854064-acloim1u6fj546lm08s7vohl8rio5t4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFSTBW4Yyuoady4pVsj-UsIxnZGDk3ZFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106820854064-acloim1u6fj546lm08s7vohl8rio5t4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

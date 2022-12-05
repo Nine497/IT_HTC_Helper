@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:htc_helper/Student_Login.dart';
 import 'package:htc_helper/chat.dart';
+import 'package:intl/date_symbol_data_file.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
     title: 'IT HTC Helper',
     theme: ThemeData(textTheme: GoogleFonts.acmeTextTheme()),
-    home: Chat(),
+    home: MyApp(),
   ));
 }
 
@@ -95,7 +97,7 @@ class MyApp extends StatelessWidget {
                     child: InkWell(
                       splashColor: Colors.black26,
                       onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        Navigator.of(context).push(MaterialPageRoute(
                             builder: (BuildContext context) => StudentLogin()));
                       },
                       child: Row(
