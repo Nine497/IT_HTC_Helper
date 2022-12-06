@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:htc_helper/chat.dart';
+import 'package:htc_helper/information.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -57,7 +58,7 @@ class NavigationDrawer extends StatelessWidget {
             title: const Text('Information'),
             onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => const Home(),
+                builder: (context) => const Information(),
               ));
             },
           ),

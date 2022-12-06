@@ -70,7 +70,7 @@ class _StudentLoginState extends State<StudentLogin> {
                         child: SizedBox(height: 30),
                       ),
                       Container(
-                        child: Text('Login Screen',
+                        child: Text('Student Login',
                             style: GoogleFonts.acme(
                                 fontSize: 50, color: Colors.white)),
                       ),
