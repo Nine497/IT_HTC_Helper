@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:htc_helper/main.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:htc_helper/Home.dart';
 
 class Chat extends StatefulWidget {
   const Chat({super.key});
@@ -48,9 +49,15 @@ class _ChatState extends State<Chat> {
     final dateTimeFormat = DateFormat.yMMMMEEEEd(locale);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "IT HTC Chat bot",
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () =>
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => const Home(),
+          )),
         ),
+        title: Text("IT HTC Bot"),
+        centerTitle: true,
       ),
       body: Container(
         child: Column(

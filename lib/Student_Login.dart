@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:htc_helper/Home.dart';
 import 'package:htc_helper/profile.dart';
 import 'package:htc_helper/chat.dart';
 import 'package:htc_helper/main.dart';
@@ -138,7 +139,7 @@ class _StudentLoginState extends State<StudentLogin> {
                                                 Navigator.pushReplacement(
                                                     context, MaterialPageRoute(
                                                         builder: (context) {
-                                                  return Chat();
+                                                  return Home();
                                                 }));
                                               });
                                             } on FirebaseException catch (e) {

@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
                     child: InkWell(
                       splashColor: Colors.black26,
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (BuildContext context) => StudentLogin()));
                       },
                       child: Row(
