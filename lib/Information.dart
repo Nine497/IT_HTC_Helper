@@ -1,7 +1,12 @@
+import 'dart:ffi';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:htc_helper/home.dart';
 import 'package:htc_helper/chat.dart';
+import 'package:htc_helper/profile.dart';
+import 'package:htc_helper/profile.dart';
 
 class Information extends StatelessWidget {
   const Information({super.key});
@@ -12,6 +17,18 @@ class Information extends StatelessWidget {
           title: const Text('Information'),
           backgroundColor: Colors.black54,
         ),
+        body: StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection("Student_info")
+                .doc("6F8ZhpGmIuL4uADydXhF") //ID OF DOCUMENT
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return new CircularProgressIndicator();
+              }
+              var document = snapshot.data;
+              return new Text(document!["Name"] + "  " + document!["Lname"]);
+            }),
         drawer: const NavigationDrawer(),
       );
 }
