@@ -8,29 +8,42 @@ import 'package:htc_helper/chat.dart';
 import 'package:htc_helper/profile.dart';
 import 'package:htc_helper/profile.dart';
 
-class Information extends StatelessWidget {
+class Information extends StatefulWidget {
   const Information({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Information'),
-          backgroundColor: Colors.black54,
-        ),
-        body: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection("Student_info")
-                .doc("6F8ZhpGmIuL4uADydXhF") //ID OF DOCUMENT
-                .snapshots(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return new CircularProgressIndicator();
-              }
-              var document = snapshot.data;
-              return new Text(document!["Name"] + "  " + document!["Lname"]);
-            }),
-        drawer: const NavigationDrawer(),
-      );
+  State<Information> createState() => _InformationState();
+}
+
+class _InformationState extends State<Information> {
+  final database = FirebaseFirestore.instance;
+
+  @override
+  Widget build(BuildContext context) {
+    final users = database.collection("Student_info").snapshots();
+
+    return Scaffold(
+      appBar: AppBar(title: Text("Firestore Example")),
+      body: StreamBuilder(
+        stream: users,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return CircularProgressIndicator();
+          return ListView.builder(
+            itemCount:
+                snapshot.data!.docs.length, // Change "documents" to "docs"
+            itemBuilder: (context, index) {
+              final data = snapshot.data!.docs[index]
+                  .data(); // Change "documents" to "docs"
+              return ListTile(
+                title: Text(data["Name"] + "  " + data["Lname"]),
+                subtitle: Text("ID : " + data["ID"]),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
 }
 
 class NavigationDrawer extends StatelessWidget {
